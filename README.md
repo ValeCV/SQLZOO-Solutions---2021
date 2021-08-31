@@ -302,5 +302,41 @@ and the bus no. and company for the second bus.
 ## Helpdesk
 
 ### Easy Questions
+---
+
+ 1. There are three issues that include the words index" and "Oracle". Find the call_date for each of them
+```sql
+SELECT DATE_FORMAT(call_date,'%Y-%m-%d %H:%i:%S') as call_date, call_ref 
+FROM Issue
+where Detail like '%Oracle%' 
+and Detail like '%index%'	
+```
+ 2. Samantha Hall made three calls on 2017-08-14. Show the date and time for each
+```sql
+select DATE_FORMAT(call_date,'%Y-%m-%d %H:%i:%S') as call_date, First_name, Last_name
+from Issue join Caller on (Issue.caller_id = Caller.caller_id)
+where Caller.first_name = 'Samantha' and Caller.last_name = 'Hall' and DATE_FORMAT(call_date,'%Y-%m-%d')='2017-08-14'
+```
+
+ 3. There are 500 calls in the system (roughly). Write a query that shows the number that have each status.
+```sql
+select status, count(1) as Volume from Issue
+group by status
+```
+
+ 4. Calls are not normally assigned to a manager but it does happen. How many calls have been assigned to staff who are at Manager Level?
+```sql
+select count(1) as mlcc
+from Issue join Staff on (Issue.assigned_to = Staff.staff_code) join Level on (Staff.level_code = Level.level_code)
+where Manager = 'Y'
+```
+
+ 5. Show the manager for each shift. Your output should include the shift date and type; also the first and last name of the manager.
+```sql
+select DATE_FORMAT(Shift_date,'%Y-%m-%d') as Shift_date, Shift_type, first_name, last_name
+from Shift y left join Staff x  on (y.manager = x.staff_code)
+order by Shift_date, last_name, shift_type
+```
+
 
 ### Medium Questions
