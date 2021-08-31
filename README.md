@@ -1,4 +1,4 @@
-# SQLZOO Solutions---2021
+# SQLZOO Solutions - 2021
 Solutions to some of SQLZOO Tutorials and Assesments with tables- 2021
 ***
 <details open="open">
