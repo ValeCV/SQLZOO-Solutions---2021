@@ -65,6 +65,8 @@ Solutions to some of SQLZOO Tutorials and Assesments with tables- 2021
   |117|Hillend|
   
 ### Routes and stops
+---
+
 4. The query shown gives the number of routes that visit either London Road (149) or Craiglockhart (53). Run the query and notice the two services that link these stops have a count of 2. Add a HAVING clause to restrict the output to these two routes.
 ```sql
   SELECT company, num, COUNT(*)
@@ -114,6 +116,8 @@ WHERE stopa.name = 'Craiglockhart'
   |LRT|45|Craiglockhart|London Road|
 
 ### Using a self join
+---
+
  7. Give a list of all the services which connect stops 115 and 137 ('Haymarket' and 'Leith')
 ```sql
   SELECT DISTINCT a.company, a.num
