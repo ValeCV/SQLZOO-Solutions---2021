@@ -1,6 +1,6 @@
 # SQLZOO Solutions---2021
 Solutions to some of SQLZOO Tutorials and Assesments with tables- 2021
-
+***
 <details open="open">
   <summary>Sections</summary>
   <ol>
@@ -12,23 +12,18 @@ Solutions to some of SQLZOO Tutorials and Assesments with tables- 2021
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#helpdesk">Helpdesk</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#easy-questions">Easy Questions</a></li>
+        <li><a href="#medium-questions">Medium Questions</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
-## Sections:
-1. [Self JOIN: Edinburgh Buses](#self-join:-edinburgh-buses)
+***
+
+# _Tutorials_
 
 ## Self JOIN Edinburgh Buses
 
@@ -172,7 +167,7 @@ WHERE stopa.name = 'Craiglockhart'
       ON (b.stop = stopb.id)
   WHERE stopa.name = 'Craiglockhart' 
 ```
-<details open="open"><summary>Open to view long table</summary>
+<details><summary>Open to view long table</summary>
   
   |name|company|num|
   |--- |--- |--- |
@@ -256,7 +251,7 @@ and the bus no. and company for the second bus.
 
   ORDER BY x.num, name, y.num
 ```
-<details open="open"><summary>Open to view long table</summary>
+<details><summary>Open to view long table</summary>
   
   |num|company|name|num|company|
   |--- |--- |--- |--- |--- |
@@ -297,3 +292,11 @@ and the bus no. and company for the second bus.
   |47|LRT|Canonmills|34|LRT|
   |47|LRT|Canonmills|35|LRT|
 </details> 
+
+# _Assesments_
+
+## Helpdesk
+
+### Easy Questions
+
+### Medium Questions
