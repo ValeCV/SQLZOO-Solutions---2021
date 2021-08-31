@@ -167,7 +167,7 @@ WHERE stopa.name = 'Craiglockhart'
       ON (b.stop = stopb.id)
   WHERE stopa.name = 'Craiglockhart' 
 ```
-<details><summary>Open to view long table</summary>
+<details><summary><strong><em>Open to view long table</em></strong></summary>
   
   |name|company|num|
   |--- |--- |--- |
@@ -251,7 +251,7 @@ and the bus no. and company for the second bus.
 
   ORDER BY x.num, name, y.num
 ```
-<details><summary>Open to view long table</summary>
+<details><summary><strong><em>Open to view long table</em></strong></summary>
   
   |num|company|name|num|company|
   |--- |--- |--- |--- |--- |
