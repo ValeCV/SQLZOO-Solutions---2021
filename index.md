@@ -148,7 +148,6 @@ Solutions to some of SQLZOO Tutorials and Assesments with tables- 2021
 ```
   |company|num|name|name|
   |--- |--- |--- |--- |
-  
   |LRT|4|Craiglockhart|London Road|
   |LRT|45|Craiglockhart|London Road|
 
