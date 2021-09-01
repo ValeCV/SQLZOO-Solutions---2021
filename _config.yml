@@ -1,2 +1,17 @@
 theme: jekyll-theme-cayman
 markdown: GFM
+
+@import "{{ site.theme }}";
+
+  .btn {
+    color: #0000ff;
+    border-color: #721B67; 
+    // background-color: #008CBA;
+  } 
+
+  .btn:hover {
+    color: #0bb6e1cc;
+    text-decoration: none;
+    background-color: #7c940ea1;
+    border-color: #0000ff;
+  }
