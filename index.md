@@ -69,6 +69,7 @@ Solutions to some of SQLZOO Tutorials and Assesments with tables- 2021
   FROM stops;
 ```
   |STOPS|
+  
   |--- |
   |246|
 2. Find the id value for the stop 'Craiglockhart'
@@ -148,6 +149,7 @@ Solutions to some of SQLZOO Tutorials and Assesments with tables- 2021
 ```
   |company|num|name|name|
   |--- |--- |--- |--- |
+  
   |LRT|4|Craiglockhart|London Road|
   |LRT|45|Craiglockhart|London Road|
 
