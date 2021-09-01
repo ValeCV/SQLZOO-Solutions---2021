@@ -1,4 +1,2 @@
 theme: jekyll-theme-cayman
-markdown: GMF
-GMF:
-  parse_block_html: true
+markdown: CommonMarkGhPages
