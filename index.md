@@ -70,8 +70,6 @@ Solutions to some of SQLZOO Tutorials and Assesments with tables- 2021
 ```
   |STOPS|
   
-  |--- |
-  
   |246|
 2. Find the id value for the stop 'Craiglockhart'
 ```sql
