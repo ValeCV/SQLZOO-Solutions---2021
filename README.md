@@ -6,46 +6,52 @@ Solutions to some of SQLZOO Tutorials and Assesments with tables- 2021
   <ol>
     <li>
       <a href="#self-join-edinburgh-buses">Self JOIN Edinburgh Buses</a>
-      <ul>
-        <li><a href="#routes-and-stops">Routes and stops</a></li>
-        <li><a href="#using-a-self-join">Using a self join</a></li>
-      </ul>
     </li>
     <li>
       <a href="#helpdesk">Helpdesk</a>
       <ul>
-        <li><a href="#easy-questions">Easy Questions</a></li>
-        <li><a href="#medium-questions">Medium Questions</a></li>
+        <li><a href="#easy-questions">Helpdesk Easy Questions</a></li>
+        <li><a href="#medium-questions">Helpdesk Medium Questions</a></li>
       </ul>
     </li>
     <li>
       <a href="#guest-house">Guest House</a>
       <ul>
-        <li><a href="#easy-questions">Easy Questions</a></li>
-        <li><a href="#medium-questions">Medium Questions</a></li>
+        <li><a href="#guest-house-easy-questions">Easy Questions</a></li>
+        <li><a href="#guest-house-medium-questions">Medium Questions</a></li>
       </ul>
     </li>
       </li>
     <li>
       <a href="#adventure-works">Adventure Works</a>
       <ul>
-        <li><a href="#easy-questions">Easy Questions</a></li>
-        <li><a href="#medium-questions">Medium Questions</a></li>
+        <li><a href="#adventure-works-easy-questions">Easy Questions</a></li>
+        <li><a href="#adventure-works-medium-questions">Medium Questions</a></li>
       </ul>
     </li>
     <li>
       <a href="#university-timetables-neeps">University Timetables Neeps</a>
       <ul>
-        <li><a href="#easy-questions">Easy Questions</a></li>
-        <li><a href="#medium-questions">Medium Questions</a></li>
+        <li><a href="#neeps-easy-questions">Easy Questions</a></li>
+        <li><a href="#neeps-medium-questions">Medium Questions</a></li>
       </ul>
     </li>
     <li>
       <a href="#musicians">Musicians</a>
       <ul>
-        <li><a href="#easy-questions">Easy Questions</a></li>
-        <li><a href="#medium-questions">Medium Questions</a></li>
+        <li><a href="#musicians-easy-questions">Easy Questions</a></li>
+        <li><a href="#musicians-medium-questions">Medium Questions</a></li>
       </ul>
+    </li>
+    <li>
+      <a href="#congestion-charging">Congestion Charging</a>
+      <ul>
+        <li><a href="#congestion-charging-easy-questions">Easy Questions</a></li>
+        <li><a href="#congestion-charging-medium-questions">Medium Questions</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#white-christmas">White Christmas</a>
     </li>
   </ol>
 </details>
@@ -442,7 +448,7 @@ and the bus no. and company for the second bus.
 
 ## Guest House
 
-### Easy Questions
+### Guest House Easy Questions
 ---
 
  1. Guest 1183. Give the booking_date and the number of nights for guest 1183.
@@ -482,7 +488,7 @@ and the bus no. and company for the second bus.
    GROUP BY guest_id
 ```
 
-### Medium Questions
+### Guest House Medium Questions
 ---
 
  6. Ruth Cadbury. Show the total amount payable by guest Ruth Cadbury for her room bookings. You should JOIN to the rate table using room_type_requested and occupants.
@@ -554,7 +560,7 @@ and the bus no. and company for the second bus.
 
 ## Adventure Works
 
-### Easy Questions
+### Adventure Works Easy Questions
 ---
 
  1. Show the first name and the email address of customer with CompanyName 'Bike World'
@@ -607,7 +613,7 @@ and the bus no. and company for the second bus.
    WHERE a.name = 'Racing Socks, L' and CompanyName = 'Riding Cycles'
 ```
 
-### Medium Questions
+### Adventure Works Medium Questions
 ---
 
  6. A "Single Item Order" is a customer order WHERE ONly ONe item is ordered. Show the SalesOrderID and the UnitPrice for every Single Item Order.
@@ -691,7 +697,7 @@ and the bus no. and company for the second bus.
 
 ## University Timetables Neeps
 
-### Easy Questions
+### Neeps Easy Questions
 ---
 
  1. Give the room id in which the event co42010.L01 takes place.
@@ -746,7 +752,7 @@ and the bus no. and company for the second bus.
    GROUP BY a.id, d.name
 ```
 
-### Medium Questions
+### Neeps Medium Questions
 ---
 
  6. Show the 'size' of each of the co72010 events. Size is the total number of students attending each event.
@@ -816,7 +822,7 @@ and the bus no. and company for the second bus.
 
 ## Musicians
 
-### Easy Questions
+### Musicians Easy Questions
 ---
 
  1. Give the organiser's name of the concert in the Assembly Rooms after the first of Feb, 1997.
@@ -886,7 +892,7 @@ and the bus no. and company for the second bus.
    GROUP BY instrument) as a
 ```
 
-### Medium Questions
+### Musicians Medium Questions
 ---
 
  6. List the names, dates of birth and the instrument played of living musicians who play a instrument which Theo also plays.
@@ -970,4 +976,164 @@ and the bus no. and company for the second bus.
          on (m_no = comp_is)
    WHERE m_name = 'Sue Little'
    ORDER BY band_name
+```
+
+## Congestion Charging
+
+### Congestion Charging Easy Questions
+---
+
+ 1. Show the name and address of the keeper of vehicle SO 02 PSP.
+
+
+```sql
+   SELECT name, address
+   FROM keeper as a
+      JOIN vehicle as b 
+         on (a.id=b.keeper)
+   WHERE b.id = 'SO 02 PSP'
+
+```
+ 2. Show the number of cameras that take images for incoming vehicles.
+
+```sql
+   SELECT COUNT(*) as num
+   FROM camera
+   WHERE perim = 'IN'
+
+```
+ 3. List the image details taken by Camera 10 before 26 Feb 2007.
+
+```sql
+   SELECT *
+   FROM image
+   WHERE camera = 10 and date_format(whn, '%Y-%m-%d') < '2007-02-26'
+```
+ 4. List the number of images taken by each camera. Your answer should show how many images have been taken by camera 1, camera 2 etc. The list must NOT include the images taken by camera 15, 16, 17, 18 and 19.
+
+```sql
+   SELECT camera, COUNT(*) as num_images
+   FROM image
+   WHERE camera NOT BETWEEN 15 and 19
+   GROUP BY camera
+```
+ 5. A number of vehicles have permits that start on 30th Jan 2007. List the name and address for each keeper in alphabetical order without duplication.
+
+```sql
+   SELECT DISTINCT name, address
+   FROM permit as a 
+      JOIN vehicle as b 
+         on (a.reg=b.id)
+      JOIN keeper as c 
+         on (c.id = b.keeper)
+   WHERE date_format(sdate, '%Y-%m-%d') = '2007-01-30'
+   ORDER BY name
+```
+
+### Congestion Charging Medium Questions
+---
+
+ 6. List the owners (name and address) of Vehicles caught by camera 1 or 18 without duplication.
+
+```sql
+   SELECT DISTINCT name, address
+   FROM image as a
+      JOIN vehicle as b 
+         on (a.reg=b.id)
+      JOIN keeper as c 
+         on (b.keeper = c.id)
+   WHERE camera = 18 or camera = 1
+```
+
+ 7. Show keepers (name and address) who have more than 5 vehicles.
+
+```sql
+   SELECT name, address
+   FROM keeper as a 
+      JOIN vehicle as b 
+         on (a.id =b.keeper)
+   GROUP BY name, address
+   HAVING COUNT(b.id) > 5
+```
+
+ 8. For each vehicle show the number of current permits (suppose today is the 1st of Feb 2007). The list should include the vehicle.s registration and the number of permits. Current permits can be determined based on charge types, e.g. for weekly permit you can use the date after 24 Jan 2007 and before 02 Feb 2007.
+
+```sql
+   SELECT reg, sum(case
+   WHEN chargetype = 'Daily' then sDate = '2007-02-01'
+   WHEN chargetype = 'Weekly' then sdate > '2007-01-24' and sdate < '2007-02-02'
+   WHEN chargetype = 'Monthly' then  DATE_ADD(sdate, INTERVAL 1 month) >=  '2007-02-01'
+   WHEN chargetype = 'Annual' then  DATE_ADD(sdate, INTERVAL 1 year) >=  '2007-02-01'
+   end) as currpermits
+   FROM permit
+   GROUP BY reg
+```
+
+ 9. Obtain a list of every vehicle passing camera 10 on 25th Feb 2007. Show the time, the registration and the name of the keeper if available.
+
+```sql
+   SELECT date_format(whn, '%Y-%m-%d %H:%i:%s') as time, reg, name
+   FROM image as a 
+      JOIN vehicle as b 
+         on (a.reg = b.id)
+      LEFT JOIN keeper as c 
+         on (b.keeper = c.id)
+   WHERE a.camera = 10 and date_format(whn, '%Y-%m-%d') = '2007-02-25'
+```
+
+ 10. List the keepers who have more than 4 vehicles and one of them must have more than 2 permits. The list should include the names and the number of vehicles.
+
+```sql
+   SELECT name, COUNT(DISTINCT(b.id)) as num_vehic
+   FROM keeper as a 
+      JOIN vehicle as b 
+         on (a.id = b.keeper)
+   GROUP BY name
+   HAVING num_vehic > 4 and name in (SELECT x.name FROM (SELECT name, reg, COUNT(reg) as num_permits
+   FROM permit as a
+      JOIN vehicle as b 
+         on (b.id = a.reg)
+      JOIN keeper as c 
+         on (c.id = b.keeper) 
+   GROUP BY name, reg) as x
+   WHERE num_permits > 2)
+```
+
+# _Challenges_
+
+## White Christmas
+
+ 1. The units are 10th of a degree Celcius. The columns are yr and dy for year and day of month. The next twelve columns are for January through to December. Show the average daily temperature for August 10th 1964
+```sql
+   SELECT m8/10 as temp_c FROM hadcet
+     WHERE yr=1964 AND dy=10
+
+```
+ 2. Charles Dickens is said to be responsible for the tradition of expecting snow at Christmas Daily Telegraph. Show the temperature on Christmas day (25th December) for each year of his childhood. He was born in February 1812 - so he was 1 (more or less) in December 1812. Show the twelve temperatures.
+```sql
+   SELECT yr-1811 as age, m12/10 as temp FROM hadcet
+     WHERE yr BETWEEN 1812 and 1812+11 AND dy=25 
+
+```
+ 3. We declare a White Christmas if there was a day with an average temperature below zero BETWEEN 21st and 25th of December. For each age 1-12 show which years were a White Christmas. Show 'White Christmas' or 'No snow' for each age.
+
+```sql
+   SELECT yr-1811 as age, 
+      CASE WHEN MIN(m12/10)<0 THEN 'White Christmas'
+      ELSE 'No Snow' END as type_christmas FROM hadcet
+     WHERE yr BETWEEN 1812 and 1812+11 and dy BETWEEN 21 and 25
+   GROUP BY age
+```
+ 4. A person's White Christmas COUNT (wcc) is the number of White Christmases they were exposed to as a child (BETWEEN 3 and 12 inclusive assuming they were born at the beginning of the year and were about 1 year old on their first Christmas). Charles Dickens's wcc was 8. List all the years and the wcc for children born in each year of the data set. only show years WHERE the wcc was at least 7.
+
+```sql
+   SELECT y.yr as yob, sum(type) as wcc FROM (SELECT yr, case WHEN min(m12/10) <= 0 then 1 else 0 end as type FROM hadcet
+   WHERE dy BETWEEN 21 and 25
+   GROUP BY yr) as x
+   CROSS JOIN (SELECT yr FROM hadcet
+   WHERE dy BETWEEN 21 and 25
+   GROUP BY yr) as y
+   WHERE x.yr BETWEEN y.yr+2 and y.yr+11
+   GROUP BY y.yr
+   HAVING wcc>=7
 ```
