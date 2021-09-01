@@ -1,4 +1,5 @@
 theme: jekyll-theme-cayman
+remote_theme: lewismiddleton/cayman-dark
 markdown: GFM
 
 @import "{{ site.theme }}";
